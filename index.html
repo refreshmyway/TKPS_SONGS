@@ -2,135 +2,104 @@
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
-<title>THUONG KHO PHUC SINH SONGS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>THƯƠNG KHÓ - PHỤC SINH SONGS</title>
 
 <style>
 body{
-  margin:0;
-  font-family: Arial;
-  background:#111;
-  color:white;
+    font-family: Arial, sans-serif;
+    background:#f4f6f8;
+    margin:0;
+    padding:20px;
 }
-.container{
-  display:flex;
-  height:100vh;
+
+h1{
+    text-align:center;
+    color:#333;
 }
-.player{
-  flex:3;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  background:black;
+
+table{
+    width:100%;
+    border-collapse: collapse;
+    background:white;
+    box-shadow:0 2px 8px rgba(0,0,0,0.1);
 }
-iframe{
-  width:92%;
-  height:72vh;
-  border:none;
-  border-radius:12px;
+
+th, td{
+    padding:12px;
+    border-bottom:1px solid #ddd;
+    text-align:left;
 }
-.playlist{
-  flex:1;
-  background:#1b1b1b;
-  overflow-y:auto;
+
+th{
+    background:#2c3e50;
+    color:white;
 }
-.header{
-  padding:15px;
-  font-size:20px;
-  text-align:center;
-  background:#e74c3c;
+
+tr:hover{
+    background:#f1f1f1;
 }
-.song{
-  padding:14px;
-  border-bottom:1px solid #333;
-  cursor:pointer;
+
+a{
+    color:#e74c3c;
+    text-decoration:none;
+    font-weight:bold;
 }
-.song:hover{
-  background:#333;
-}
-.song.active{
-  background:#e74c3c;
-}
-.controls{
-  padding:10px;
-  text-align:center;
-}
-button{
-  padding:8px 12px;
-  margin:0 5px;
-  border:none;
-  border-radius:5px;
-  cursor:pointer;
-  background:#e74c3c;
-  color:white;
-  font-weight:bold;
-}
-button:hover{
-  background:#c0392b;
+
+a:hover{
+    text-decoration:underline;
 }
 </style>
 </head>
 
 <body>
 
-<div class="container">
+<h1>🎵 THƯƠNG KHÓ – PHỤC SINH SONGS</h1>
 
-<div class="player">
-<iframe id="player"
-src="https://www.youtube.com/embed/PwyNWVYncgE"
-allow="autoplay; encrypted-media"></iframe>
-</div>
+<table>
+<tr>
+<th>#</th>
+<th>Title</th>
+<th>Play</th>
+</tr>
 
-<div class="playlist">
+<tr>
+<td>1</td>
+<td>Jesus dac thang_Men</td>
+<td><a href="https://www.youtube.com/watch?v=PwyNWVYncgE" target="_blank">▶ Xem</a></td>
+</tr>
 
-<div class="header">🎵 Playlist</div>
+<tr>
+<td>2</td>
+<td>Jesus dac thang_Women</td>
+<td><a href="https://www.youtube.com/watch?v=WlvP0jmGzD4" target="_blank">▶ Xem</a></td>
+</tr>
 
-<div class="song active" onclick="playSong(0,this)">1. Jesus dac thang_Men</div>
-<div class="song" onclick="playSong(1,this)">2. Jesus dac thang_Women</div>
-<div class="song" onclick="playSong(2,this)">3. Jesus dac thang_All</div>
-<div class="song" onclick="playSong(3,this)">4. Dembuon_All</div>
-<div class="song" onclick="playSong(4,this)">5. Dembuon_Women</div>
-<div class="song" onclick="playSong(5,this)">6. Dembuon_Men</div>
+<tr>
+<td>3</td>
+<td>Jesus dac thang_All</td>
+<td><a href="https://www.youtube.com/watch?v=NmLaB0LwS_E" target="_blank">▶ Xem</a></td>
+</tr>
 
-<div class="controls">
-<button onclick="prevSong()">⏮️ Back</button>
-<button onclick="nextSong()">⏭️ Next</button>
-</div>
+<tr>
+<td>4</td>
+<td>Dembuon_All</td>
+<td><a href="https://www.youtube.com/watch?v=ikZVe95iYRc" target="_blank">▶ Xem</a></td>
+</tr>
 
-</div>
+<tr>
+<td>5</td>
+<td>Dembuon_Women</td>
+<td><a href="https://www.youtube.com/watch?v=3jMfWIfRkNc" target="_blank">▶ Xem</a></td>
+</tr>
 
-</div>
+<tr>
+<td>6</td>
+<td>Dembuon_Men</td>
+<td><a href="https://www.youtube.com/watch?v=OfwoyQlD73k" target="_blank">▶ Xem</a></td>
+</tr>
 
-<script>
-const videos = [
-  "PwyNWVYncgE",
-  "WlvP0jmGzD4",
-  "NmLaB0LwS_E",
-  "ikZVe95iYRc",
-  "3jMfWIfRkNc",
-  "OfwoyQlD73k"
-];
-
-let currentIndex = 0;
-
-function playSong(index, el){
-  currentIndex = index;
-  document.getElementById("player").src = "https://www.youtube.com/embed/" + videos[index] + "?autoplay=1";
-  document.querySelectorAll(".song").forEach(s => s.classList.remove("active"));
-  el.classList.add("active");
-}
-
-function nextSong(){
-  currentIndex = (currentIndex + 1) % videos.length;
-  const el = document.querySelectorAll(".song")[currentIndex];
-  playSong(currentIndex, el);
-}
-
-function prevSong(){
-  currentIndex = (currentIndex - 1 + videos.length) % videos.length;
-  const el = document.querySelectorAll(".song")[currentIndex];
-  playSong(currentIndex, el);
-}
-</script>
+</table>
 
 </body>
 </html>
