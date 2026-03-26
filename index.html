@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>THUONG KHO PHUC SINH SONGS</title>
+
+<style>
+body{
+  margin:0;
+  font-family: Arial;
+  background:#111;
+  color:white;
+}
+.container{
+  display:flex;
+  height:100vh;
+}
+.player{
+  flex:3;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:black;
+}
+iframe{
+  width:92%;
+  height:72vh;
+  border:none;
+  border-radius:12px;
+}
+.playlist{
+  flex:1;
+  background:#1b1b1b;
+  overflow-y:auto;
+}
+.header{
+  padding:15px;
+  font-size:20px;
+  text-align:center;
+  background:#e74c3c;
+}
+.song{
+  padding:14px;
+  border-bottom:1px solid #333;
+  cursor:pointer;
+}
+.song:hover{
+  background:#333;
+}
+.song.active{
+  background:#e74c3c;
+}
+.controls{
+  padding:10px;
+  text-align:center;
+}
+button{
+  padding:8px 12px;
+  margin:0 5px;
+  border:none;
+  border-radius:5px;
+  cursor:pointer;
+  background:#e74c3c;
+  color:white;
+  font-weight:bold;
+}
+button:hover{
+  background:#c0392b;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="player">
+<iframe id="player"
+src="https://www.youtube.com/embed/PwyNWVYncgE"
+allow="autoplay; encrypted-media"></iframe>
+</div>
+
+<div class="playlist">
+
+<div class="header">🎵 Playlist</div>
+
+<div class="song active" onclick="playSong(0,this)">1. Jesus dac thang_Men</div>
+<div class="song" onclick="playSong(1,this)">2. Jesus dac thang_Women</div>
+<div class="song" onclick="playSong(2,this)">3. Jesus dac thang_All</div>
+<div class="song" onclick="playSong(3,this)">4. Dembuon_All</div>
+<div class="song" onclick="playSong(4,this)">5. Dembuon_Women</div>
+<div class="song" onclick="playSong(5,this)">6. Dembuon_Men</div>
+
+<div class="controls">
+<button onclick="prevSong()">⏮️ Back</button>
+<button onclick="nextSong()">⏭️ Next</button>
+</div>
+
+</div>
+
+</div>
+
+<script>
+const videos = [
+  "PwyNWVYncgE",
+  "WlvP0jmGzD4",
+  "NmLaB0LwS_E",
+  "ikZVe95iYRc",
+  "3jMfWIfRkNc",
+  "OfwoyQlD73k"
+];
+
+let currentIndex = 0;
+
+function playSong(index, el){
+  currentIndex = index;
+  document.getElementById("player").src = "https://www.youtube.com/embed/" + videos[index] + "?autoplay=1";
+  document.querySelectorAll(".song").forEach(s => s.classList.remove("active"));
+  el.classList.add("active");
+}
+
+function nextSong(){
+  currentIndex = (currentIndex + 1) % videos.length;
+  const el = document.querySelectorAll(".song")[currentIndex];
+  playSong(currentIndex, el);
+}
+
+function prevSong(){
+  currentIndex = (currentIndex - 1 + videos.length) % videos.length;
+  const el = document.querySelectorAll(".song")[currentIndex];
+  playSong(currentIndex, el);
+}
+</script>
+
+</body>
+</html>
